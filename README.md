@@ -1,6 +1,6 @@
-# **SOURCE_NAME**
+# Gizzy's Shit Car Thing Apps
 
-**SOURCE_DESCRIPTION**
+Just random shit I make for the car thing like bamcamthing
 
 Webapps for the Spotify Car Thing running [bridgething](https://bridgething.com).
 
