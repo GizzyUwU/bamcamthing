@@ -1,0 +1,45 @@
+{
+  "$schema": "https://apps.bridgething.com/schemas/catalog/v1.json",
+  "schema": "catalog.v1",
+  "updated_at": "2026-09-27T17:23:46.250Z",
+  "repo": {
+    "name": "bamcamthing",
+    "description": "Webapps by bamcamthing.",
+    "homepage": "https://github.com/GizzyUwU/bamcamthing",
+    "icon": null
+  },
+  "apps": [
+    {
+      "id": "01a0df3a-dc68-7723-888a-555400c16470",
+      "name": "bamcamthing",
+      "description": "Bambu printer camera and live print status on the Car Thing screen.",
+      "author": "gizzy",
+      "icon": null,
+      "homepage": "https://github.com/GizzyUwU/bamcamthing",
+      "source": "https://github.com/GizzyUwU/bamcamthing",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "released_at": "2026-09-27T17:23:46.218Z",
+          "download": {
+            "url": "https://gizzyuwu.github.io/bamcamthing/r/01a0df3a-dc68-7723-888a-555400c16470/0.1.0.zip",
+            "size": 899548,
+            "sha256": "ab3cd3202f59ee4e763a33176d03457a524a9f35ea73542f423974ae3c33fed5"
+          },
+          "settings": {
+            "url": "https://gizzyuwu.github.io/bamcamthing/s/01a0df3a-dc68-7723-888a-555400c16470/0.1.0.html",
+            "size": 27190,
+            "sha256": "cbc00224c76112a4c155c92b94645b9a70813add2635a8d9651a75dbffb0bfcb"
+          },
+          "permissions": [
+            "net.fetch",
+            "net.proxy"
+          ],
+          "min_libbridgething_version": "0.12.1",
+          "changelog": "Bambuddy camera on the Car Thing screen.\n\nLive MJPEG from `/api/v1/printers/{id}/camera/stream` with the print state from\n`/api/v1/printers/{id}/overlay-status`: part name, progress, layer, time left,\nnozzle and bed. The feed is a plain `<img>`, which only works because the app\nasks for `net.proxy` so the device can route to Bambuddy; with the phone's\n`net.fetch` tunnel as the fallback it polls snapshots instead.\n\nRotary cycles print, detail, and a clean feed. Preset 1 toggles the chrome,\n2 the diagnostics line, 3 refetches, 4 the requested fps."
+        }
+      ]
+    }
+  ],
+  "recommended_sources": []
+}
