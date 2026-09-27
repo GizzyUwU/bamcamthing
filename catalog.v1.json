@@ -1,7 +1,7 @@
 {
   "$schema": "https://apps.bridgething.com/schemas/catalog/v1.json",
   "schema": "catalog.v1",
-  "updated_at": "2026-09-27T17:23:46.250Z",
+  "updated_at": "2026-09-27T17:26:38.695Z",
   "repo": {
     "name": "bamcamthing",
     "description": "Webapps by bamcamthing.",
@@ -36,7 +36,7 @@
             "net.proxy"
           ],
           "min_libbridgething_version": "0.12.1",
-          "changelog": "Bambuddy camera on the Car Thing screen.\n\nLive MJPEG from `/api/v1/printers/{id}/camera/stream` with the print state from\n`/api/v1/printers/{id}/overlay-status`: part name, progress, layer, time left,\nnozzle and bed. The feed is a plain `<img>`, which only works because the app\nasks for `net.proxy` so the device can route to Bambuddy; with the phone's\n`net.fetch` tunnel as the fallback it polls snapshots instead.\n\nRotary cycles print, detail, and a clean feed. Preset 1 toggles the chrome,\n2 the diagnostics line, 3 refetches, 4 the requested fps."
+          "changelog": null
         }
       ]
     }
