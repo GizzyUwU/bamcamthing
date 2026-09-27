@@ -1,0 +1,49 @@
+{
+  "id": "01a0df3a-dc68-7723-888a-555400c16470",
+  "name": "bamcamthing",
+  "version": "0.1.0",
+  "description": "Bambu printer camera and live print status on the Car Thing screen.",
+  "settings": "settings.html",
+  "config": [
+    {
+      "type": "string",
+      "data": {
+        "key": "base_url",
+        "label": "Bambuddy base url",
+        "pattern": "^https?://.+",
+        "minLength": null,
+        "maxLength": null,
+        "default": null
+      }
+    },
+    {
+      "type": "number",
+      "data": { "key": "printer_id", "label": "Printer id", "min": 1, "max": null, "step": 1, "default": 1 }
+    },
+    {
+      "type": "secret",
+      "data": {
+        "key": "token",
+        "label": "Bambuddy stream token (from the Printers page overlay url)",
+        "pattern": null,
+        "minLength": null,
+        "maxLength": null,
+        "default": null
+      }
+    },
+    {
+      "type": "number",
+      "data": { "key": "fps", "label": "Camera fps when the device reaches Bambuddy directly", "min": 1, "max": 30, "step": 1, "default": 5 }
+    },
+    {
+      "type": "number",
+      "data": { "key": "poll_ms", "label": "Milliseconds between snapshots when the feed is tunnelled on top of each round trip", "min": 500, "max": null, "step": 100, "default": 2500 }
+    },
+    {
+      "type": "boolean",
+      "data": { "key": "direct", "label": "Prefer the direct mjpeg stream when the device can reach Bambuddy", "default": true }
+    }
+  ],
+  "permissions": ["net.fetch", "net.proxy"],
+  "art": { "heroPx": 248, "thumbPx": 96 }
+}
