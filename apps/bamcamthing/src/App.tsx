@@ -11,6 +11,7 @@ import {
 } from './bambuddy';
 import { daemonUrl } from './daemon';
 import { useFeed } from './useFeed';
+import { isZoomed, useZoom, zoomStyle } from './useZoom';
 
 const statusPollMs = 2500;
 const views = ['print', 'detail', 'clean'] as const;
@@ -156,20 +157,26 @@ export default function App() {
   const live = status ? printingStates.has(status.state) : false;
   const quarter = status ? (((Math.round(status.camera_rotation / 90) % 4) + 4) % 4) * 90 : 0;
   const showChrome = view !== 'clean';
+  const root = useRef<HTMLDivElement>(null);
+  const { zoom, handlers } = useZoom(!showChrome, root, quarter);
   const progress = Math.min(100, Math.max(0, status?.progress ?? 0));
   const temps = status?.temperatures ?? null;
   const missing = config ? !config.token || !config.baseUrl : true;
   const missingWhat = config?.baseUrl ? 'bambuddy base url' : 'token';
 
   return (
-    <div className="relative h-full w-full overflow-hidden bg-screen" onWheel={onWheel}>
+    <div
+      className="relative h-full w-full overflow-hidden bg-screen select-none"
+      onWheel={onWheel}
+      {...handlers}
+      style={showChrome ? undefined : { touchAction: 'none' }}>
       {feed.url ? (
         <img
           src={feed.url}
           alt=""
           onError={feed.tunnelOnly}
           className="absolute inset-0 h-full w-full object-cover"
-          style={{ transform: `rotate(${quarter}deg)` }}
+          style={{ transform: zoomStyle(zoom, quarter), willChange: 'transform' }}
         />
       ) : (
         <div className="absolute inset-0 grid place-items-center bg-screen px-16 text-center">
@@ -272,6 +279,12 @@ export default function App() {
 
       {live && view === 'print' && (
         <div className="pointer-events-none absolute top-14 right-5 h-2 w-2 animate-pulse rounded-full bg-ok" />
+      )}
+
+      {view === 'clean' && isZoomed(zoom) && (
+        <div className="pointer-events-none absolute right-4 bottom-3 rounded bg-screen/70 px-2 py-1 font-mono text-hint text-near tabular-nums">
+          {zoom.scale.toFixed(1)}x · pinch to zoom, drag to look, double tap to reset
+        </div>
       )}
     </div>
   );
